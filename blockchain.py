@@ -28,7 +28,8 @@ class Blockchain:
 	def add_block(self, transactions):
 		previous_block_hash = self.chain[len(self.chain) - 1].hash
 		new_block = Block(transactions, previous_block_hash)
-		self.chain.append(new_block)
+		proof = self.proof_of_work(new_block)
+		return [proof, new_block]
 
 	# validate de hash with the atual block and the previous one
 	def validate_chain(self):
