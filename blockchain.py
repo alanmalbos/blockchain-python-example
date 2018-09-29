@@ -23,3 +23,9 @@ class Blockchain:
 			current_block = self.chain[i]
 			print("Block {} {}".format(i, current_block))
 			current_block.print_contents()
+
+	# add a new block to end of blockchain 'chain'
+	def add_block(self, transactions):
+		previous_block_hash = self.chain[len(self.chain) - 1].hash
+		new_block = Block(transactions, previous_block_hash)
+		self.chain.append(new_block)
