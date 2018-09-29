@@ -45,3 +45,12 @@ class Blockchain:
 				return False
 			# returned true after passed in the two conditions 
 			return True
+
+	def proof_of_work(self, block,difficulty = 1):
+		proof = block.generate_hash()
+		while(proof[:2] != 0 * difficulty):
+			block.nonce += 1
+			proof = sha256((str(block.nonce) + str(block.transactions)).encode()).haxdigest()
+
+		block.nonce = 0
+		return proof
