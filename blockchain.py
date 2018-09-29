@@ -9,9 +9,17 @@ class Blockchain:
 		# first block creation
 		self.genesis_block()
 
+	#create a genesis block
 	def genesis_block():
 		# don't exist previous transactions
 		transactions = []
 		# don't exist a previous hash
 		previous_hash = "0"
 		self.chain.append(Block(transactions, previous_hash))
+
+	# print all blocks in chain
+	def print_blocks(self):
+		for i in range(len(self.chain)):
+			current_block = self.chain[i]
+			print("Block {} {}".format(i, current_block))
+			current_block.print_contents()
